@@ -1,0 +1,7 @@
+import { supabase } from './supabase';
+export const db = {
+  colleges: { findAll: async () => { const { data } = await supabase.from('colleges').select('*'); return data || []; }, findBySlug: async (slug) => { const { data } = await supabase.from('colleges').select('*').eq('slug', slug).single(); return data || null; }, incrementViews: async (slug) => {} },
+  reviews: { findByCollegeId: async (collegeId) => { const { data } = await supabase.from('reviews').select('*').eq('college_id', collegeId); return data || []; }, create: async (review) => { const { data } = await supabase.from('reviews').insert(review).select().single(); return data; } },
+  questions: { findByCollegeId: async (collegeId) => { const { data } = await supabase.from('questions').select('*').eq('college_id', collegeId); return data || []; }, create: async (q) => { const { data } = await supabase.from('questions').insert(q).select().single(); return data; }, findAll: async () => { const { data } = await supabase.from('questions').select('*'); return data || []; } },
+  answers: { findByQuestionId: async (questionId) => { const { data } = await supabase.from('answers').select('*').eq('question_id', questionId); return data || []; }, create: async (a) => { const { data } = await supabase.from('answers').insert(a).select().single(); return data; } }
+};

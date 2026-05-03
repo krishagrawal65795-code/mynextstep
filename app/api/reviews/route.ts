@@ -1,0 +1,5 @@
+import { db } from '@/lib/db';
+import { NextResponse } from 'next/server';
+import { getServerSession } from 'next-auth';
+export async function GET(req: Request) { const { searchParams } = new URL(req.url); const collegeId = searchParams.get('collegeId'); const warning = searchParams.get('warning'); let reviews = collegeId ? await db.reviews.findByCollegeId(collegeId) : []; if (warning) reviews = reviews.filter(r => r.rating_placement < 3 || r.reality_gap); return NextResponse.json(reviews); }
+export async function POST(req: Request) { const session = await getServerSession(); if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 }); const body = await req.json(); const newReview = await db.reviews.create({ ...body, userId: session.user.id, helpful_count: 0, is_verified: false }); return NextResponse.json(newReview, { status: 201 }); }
