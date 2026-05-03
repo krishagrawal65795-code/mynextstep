@@ -6,7 +6,7 @@ export async function GET() {
   const { data, error } = await supabase
     .from('colleges')
     .select('*')   // fetch all columns
-    .limit(10);
+    .limit(500);
 
   if (error) {
     console.error('Supabase error:', error);
