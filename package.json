@@ -9,18 +9,18 @@
     "import-colleges": "node scripts/import-colleges.js"
   },
   "dependencies": {
-    "@supabase/auth-helpers-nextjs": "^0.8.7",
+    "@supabase/ssr": "^0.10.2",
     "@supabase/supabase-js": "^2.39.0",
     "bcryptjs": "^2.4.3",
     "cloudinary": "^1.41.0",
     "csv-parser": "^3.0.0",
     "dotenv": "^17.4.2",
     "lucide-react": "^0.294.0",
-    "next": "14.0.4",
+    "next": "^14.2.35",
     "next-auth": "^4.24.5",
     "posthog-js": "^1.88.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
     "react-dropzone": "^14.2.3",
     "react-hook-form": "^7.48.2",
     "react-hot-toast": "^2.4.1"
